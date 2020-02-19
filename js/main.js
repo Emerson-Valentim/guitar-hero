@@ -148,9 +148,8 @@ function contarPontosPerdidos(){
 function contarAcertos(coluna){
 	if(validarLinhaUnitaria(coluna, 28)){
 		pontosFeitos++;
-		$('#pontosGanhos').text(pontosFeitos);
+		$('#pontosGanhos').text(pontosFeitos - 4);
 	}
-
 }
 
 function interpretarEntrada(tecla){
@@ -174,7 +173,7 @@ queryEixoY()
 mapearPixel()
 
 $('#play').click(function(){
-
+	$('#joystick').focus();
 	linha = 29
 	setInterval(function(){
 		andarEsteira(linha);
