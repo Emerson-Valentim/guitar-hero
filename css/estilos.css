@@ -50,6 +50,12 @@ main{
 	font-size: 30px;
 }
 
+.menu #joystick{
+	margin: 15px 0;
+	height: 90px;
+	opacity: 0.1;
+}
+
 .esteira{
 	flex: 1;
 	width: 100%;
@@ -66,6 +72,7 @@ main{
 }
 
 .eixoX{
+	background: gray;
 	transition: all 0.1s ;
 	display: table;
 	flex: 1;
