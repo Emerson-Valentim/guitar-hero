@@ -183,7 +183,7 @@ $('#play').click(function(){
 			linha = 29;
 			gerarNota();
 		}
-	}, 4)
+	}, 10)
 
 })
 
