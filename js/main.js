@@ -97,7 +97,7 @@ function validarCor(coluna, linha){
 
 function trocarCor(coluna, linha){
 	if(linhaEsteira[coluna].style.background == cores[coluna]){
-		linhaEsteira[coluna].style.background = 'white';
+		linhaEsteira[coluna].style.background = 'gray';
 		colunas[coluna][linha + 1].style.background = cores[coluna];
 	//Coluna= 1 ~ 4
 	//Linha = 1 ~ 30
@@ -120,19 +120,55 @@ function andarEsteira(linha){
 }
 
 pontosPerdidos = -4
+pontosFeitos = 0
 
 function limparUltimaLinha(coluna){
-
-	//RESPONSÁVEL POR LIMPAR ULTIMA LINHA E CONTAR PONTOS PERDIDOS//
-	if(colunas[coluna][29].style.background != 'white'){
-		colunas[coluna][29].style.background = "white"
-		pontosPerdidos++;
-		if(pontosPerdidos > 0){
-			$('#pontosPerdidos').text(pontosPerdidos);
-		}
+	if(validarLinhaUnitaria(coluna, 29)){
+		colunas[coluna][29].style.background = "gray"
+		contarPontosPerdidos();
 	}
 }
 
+
+function validarLinhaUnitaria(coluna, linha){
+	if(colunas[coluna][linha].style.background != 'gray'){
+		colunas[coluna][linha].style.background = "gray"
+		return true;
+	}
+	return false;
+}
+
+function contarPontosPerdidos(){
+	pontosPerdidos++;
+	if(pontosPerdidos > 0){
+		$('#pontosPerdidos').text(pontosPerdidos);	
+	}
+}
+
+function contarAcertos(coluna){
+	if(validarLinhaUnitaria(coluna, 28)){
+		pontosFeitos++;
+		$('#pontosGanhos').text(pontosFeitos);
+	}
+
+}
+
+function interpretarEntrada(tecla){
+	switch(tecla){
+		case 97:
+			contarAcertos(0);
+			break;
+		case 115:
+			contarAcertos(1);
+			break;
+		case 100:
+			contarAcertos(2);	
+			break;
+		case 102:
+			contarAcertos(3);
+			break;
+	}
+}
 
 queryEixoY()
 mapearPixel()
@@ -147,8 +183,10 @@ $('#play').click(function(){
 			linha = 29;
 			gerarNota();
 		}
-	}, 8)
+	}, 4)
 
 })
 
-
+$('#joystick').keypress(function(e){
+	interpretarEntrada(e.keyCode)
+})
