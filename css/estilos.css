@@ -75,6 +75,7 @@ main{
 }
 
 .eixoX{
+	border-color: white;
 	background: gray;
 	transition: all 0.1s ;
 	display: table;

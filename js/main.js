@@ -119,7 +119,7 @@ function andarEsteira(linha){
 }
 
 pontosPerdidos = -4
-pontosFeitos = -4
+pontosFeitos = -8
 
 function limparUltimaLinha(coluna){
 	if(validarLinhaUnitaria(coluna, 29)){
@@ -145,7 +145,7 @@ function contarPontosPerdidos(){
 }
 
 function contarAcertos(coluna){
-	if(validarLinhaUnitaria(coluna, 28)){
+	if(validarLinhaUnitaria(coluna, 28) || validarLinhaUnitaria(coluna, 27)){
 		pontosFeitos++;
 		if(pontosFeitos > 0){
 			$('#pontosGanhos').text(pontosFeitos);
@@ -173,15 +173,27 @@ function interpretarEntrada(tecla){
 	}
 }
 
+function limparGrid(){
+	rotacao = 0;
+	while(rotacao < 2){
+		for(input = 0; input < 4; input++){
+			contarAcertos(input);
+		}
+		rotacao++;
+		input = 0;
+	}
+}
+
 function executarEntrada(cores, num){
 	contarAcertos(num);
 	trocarCorInput(cores, num)
 }
 
-
 queryEixoY();
 mapearPixel();
 colorirTutorial(cores);
+pintarBorda();
+limparGrid();
 
 $('#play').click(function(){
 	$('#joystick').focus();
