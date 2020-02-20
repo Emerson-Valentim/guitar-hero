@@ -3,7 +3,6 @@ var pixel = [];
 var cores = ['green', 'red', 'yellow', 'orange'];
 
 function mapearPixel(){
-
 	var menu = $('.eixoX')
 	for(i = 0; i < menu.length; i++){
 		menu[i].style.height =  (screen.height * .8) / $('.eixoY').length + 'px'
@@ -106,7 +105,7 @@ function trocarCor(coluna, linha){
 
 function andarEsteira(linha){
 	contador = 0;
-	var teste = setInterval(function(){
+	var andar = setInterval(function(){
 		queryEixoX(linha);
 		for(coluna = 0; coluna < 4; coluna++){
 			validarCor(coluna, linha)
@@ -114,13 +113,13 @@ function andarEsteira(linha){
 			limparUltimaLinha(coluna);
 		}
 		if(contador > 3){
-			clearInterval(teste)
+			clearInterval(andar)
 		}
 	}, 60)
 }
 
 pontosPerdidos = -4
-pontosFeitos = 0
+pontosFeitos = -4
 
 function limparUltimaLinha(coluna){
 	if(validarLinhaUnitaria(coluna, 29)){
@@ -148,32 +147,47 @@ function contarPontosPerdidos(){
 function contarAcertos(coluna){
 	if(validarLinhaUnitaria(coluna, 28)){
 		pontosFeitos++;
-		$('#pontosGanhos').text(pontosFeitos - 4);
+		if(pontosFeitos > 0){
+			$('#pontosGanhos').text(pontosFeitos);
+		}
+		return;
+	}else{
+		contarPontosPerdidos();
 	}
 }
 
 function interpretarEntrada(tecla){
 	switch(tecla){
-		case 97:
-			contarAcertos(0);
+		case 97:	
+			executarEntrada(cores, 0);
 			break;
 		case 115:
-			contarAcertos(1);
+			executarEntrada(cores, 1);
 			break;
 		case 100:
-			contarAcertos(2);	
+			executarEntrada(cores, 2);	
 			break;
 		case 102:
-			contarAcertos(3);
+			executarEntrada(cores, 3);
 			break;
 	}
 }
 
-queryEixoY()
-mapearPixel()
+function executarEntrada(cores, num){
+	contarAcertos(num);
+	trocarCorInput(cores, num)
+}
+
+
+queryEixoY();
+mapearPixel();
+colorirTutorial(cores);
 
 $('#play').click(function(){
 	$('#joystick').focus();
+	$('#joystick').keypress(function(e){
+		interpretarEntrada(e.keyCode)
+	})
 	linha = 29
 	setInterval(function(){
 		andarEsteira(linha);
@@ -184,8 +198,4 @@ $('#play').click(function(){
 		}
 	}, 10)
 
-})
-
-$('#joystick').keypress(function(e){
-	interpretarEntrada(e.keyCode)
 })
