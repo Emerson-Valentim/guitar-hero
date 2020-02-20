@@ -12,11 +12,13 @@
     </header>
     <main>
     	<div class="menu">
-    		<button id="play">JOGAR</button>
-    		<p>Erros: <span id="pontosPerdidos">0</span></p>
-    		<p>Acertos: <span id="pontosGanhos">0</span></p>
-    		<input type="text" id="joystick" maxlength="1" />
-    	</div>
+    		<div class="controladores">
+	    		<button id="play">JOGAR</button>
+	    		<p>Erros: <span id="pontosPerdidos">0</span></p>
+	    		<p>Acertos: <span id="pontosGanhos">0</span></p>
+	    		<input type="text" id="joystick" maxlength="0" />
+    		</div>
+		</div>
     	<div class="esteira">
     		<div class="eixoY">
 			<div class="eixoX" id=1/1></div> 
@@ -349,7 +351,17 @@
 			<div class="eixoX" id=30/9></div> 
 		</div>
     	</div>
-	    <div class="menu"></div>	
+	    <div class="menu">
+	    	<div class="tutorial">
+	    		<h1>COMO JOGAR: </h1>
+	    		<p>
+	    			<span>A</span><input name="cor0" type="button"/>
+	    			<span>S</span><input name="cor1" type="button"/>
+	    			<span>D</span><input name="cor2" type="button"/>
+	    			<span>F</span><input name="cor3" type="button"/>
+	    		</p>
+	    	</div>
+	    </div>	
     </main>
     
     <footer>
@@ -357,6 +369,7 @@
     </footer>
 </body>
 <script src="js/jquery.js"></script>
-<script src="js/main.js"></script>
 <script src="js/textoPiscando.js"></script>
+<script src="js/botaoPiscando.js"></script>
+<script src="js/main.js"></script>
 </html>
