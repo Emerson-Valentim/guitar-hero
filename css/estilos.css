@@ -60,6 +60,19 @@ main{
 	height: 90px;
 }
 
+.menu .precisao{
+	margin: 40px 0 0 0 ;
+}
+
+.menu .precisao button{
+	color: white;
+	font-size: 24px;
+	background: black;
+	border: purple solid;
+	width: 180px;
+	height: 90px;
+}
+
 .esteira{
 	flex: 1;
 	width: 100%;
@@ -75,7 +88,6 @@ main{
 }
 
 .eixoX{
-	border-color: white;
 	background: gray;
 	transition: all 0.1s ;
 	display: table;

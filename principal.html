@@ -9,14 +9,22 @@
 <body>
     <header>
     	<h1 class="texoColorido">GUITAR HERO COM JS</h1>
+    	<audio src="sons/verde.ogg" id='somverde'></audio>
+    	<audio src="sons/vermelho.ogg" id='somvermelho'></audio>
+    	<audio src="sons/amarelo.ogg" id='somamarelo'></audio>
+    	<audio src="sons/azul.ogg" id='somlaranja'></audio>
+    	<audio src="sons/laranja.ogg" id='somerro'></audio>
     </header>
     <main>
     	<div class="menu">
     		<div class="controladores">
 	    		<button id="play">JOGAR</button>
 	    		<p>Erros: <span id="pontosPerdidos">0</span></p>
-	    		<p>Acertos: <span id="pontosGanhos">0</span></p>
+	    		<p>Acertos: <span id="pontosFeitos">0</span></p>
 	    		<input type="text" id="joystick" maxlength="0" />
+    		</div>
+    		<div class="precisao">
+    			<button id="acurracy"></button>
     		</div>
 		</div>
     	<div class="esteira">
@@ -30,6 +38,8 @@
 			<div class="eixoX" id=1/7></div> 
 			<div class="eixoX" id=1/8></div> 
 			<div class="eixoX" id=1/9></div> 
+			<div class="eixoX" id=1/10></div> 
+			<div class="eixoX" id=1/11></div> 
 		</div>
 		<div class="eixoY">
 			<div class="eixoX" id=2/1></div> 
@@ -41,6 +51,8 @@
 			<div class="eixoX" id=2/7></div> 
 			<div class="eixoX" id=2/8></div> 
 			<div class="eixoX" id=2/9></div> 
+			<div class="eixoX" id=2/10></div> 
+			<div class="eixoX" id=2/11></div> 
 		</div>
 		<div class="eixoY">
 			<div class="eixoX" id=3/1></div> 
@@ -52,6 +64,8 @@
 			<div class="eixoX" id=3/7></div> 
 			<div class="eixoX" id=3/8></div> 
 			<div class="eixoX" id=3/9></div> 
+			<div class="eixoX" id=3/10></div> 
+			<div class="eixoX" id=3/11></div> 
 		</div>
 		<div class="eixoY">
 			<div class="eixoX" id=4/1></div> 
@@ -63,6 +77,8 @@
 			<div class="eixoX" id=4/7></div> 
 			<div class="eixoX" id=4/8></div> 
 			<div class="eixoX" id=4/9></div> 
+			<div class="eixoX" id=4/10></div> 
+			<div class="eixoX" id=4/11></div> 
 		</div>
 		<div class="eixoY">
 			<div class="eixoX" id=5/1></div> 
@@ -74,6 +90,8 @@
 			<div class="eixoX" id=5/7></div> 
 			<div class="eixoX" id=5/8></div> 
 			<div class="eixoX" id=5/9></div> 
+			<div class="eixoX" id=5/10></div> 
+			<div class="eixoX" id=5/11></div> 
 		</div>
 		<div class="eixoY">
 			<div class="eixoX" id=6/1></div> 
@@ -85,6 +103,8 @@
 			<div class="eixoX" id=6/7></div> 
 			<div class="eixoX" id=6/8></div> 
 			<div class="eixoX" id=6/9></div> 
+			<div class="eixoX" id=6/10></div> 
+			<div class="eixoX" id=6/11></div> 
 		</div>
 		<div class="eixoY">
 			<div class="eixoX" id=7/1></div> 
@@ -96,6 +116,8 @@
 			<div class="eixoX" id=7/7></div> 
 			<div class="eixoX" id=7/8></div> 
 			<div class="eixoX" id=7/9></div> 
+			<div class="eixoX" id=7/10></div> 
+			<div class="eixoX" id=7/11></div> 
 		</div>
 		<div class="eixoY">
 			<div class="eixoX" id=8/1></div> 
@@ -107,6 +129,8 @@
 			<div class="eixoX" id=8/7></div> 
 			<div class="eixoX" id=8/8></div> 
 			<div class="eixoX" id=8/9></div> 
+			<div class="eixoX" id=8/10></div> 
+			<div class="eixoX" id=8/11></div> 
 		</div>
 		<div class="eixoY">
 			<div class="eixoX" id=9/1></div> 
@@ -118,6 +142,8 @@
 			<div class="eixoX" id=9/7></div> 
 			<div class="eixoX" id=9/8></div> 
 			<div class="eixoX" id=9/9></div> 
+			<div class="eixoX" id=9/10></div> 
+			<div class="eixoX" id=9/11></div> 
 		</div>
 		<div class="eixoY">
 			<div class="eixoX" id=10/1></div> 
@@ -129,6 +155,8 @@
 			<div class="eixoX" id=10/7></div> 
 			<div class="eixoX" id=10/8></div> 
 			<div class="eixoX" id=10/9></div> 
+			<div class="eixoX" id=10/10></div> 
+			<div class="eixoX" id=10/11></div> 
 		</div>
 		<div class="eixoY">
 			<div class="eixoX" id=11/1></div> 
@@ -140,6 +168,8 @@
 			<div class="eixoX" id=11/7></div> 
 			<div class="eixoX" id=11/8></div> 
 			<div class="eixoX" id=11/9></div> 
+			<div class="eixoX" id=11/10></div> 
+			<div class="eixoX" id=11/11></div> 
 		</div>
 		<div class="eixoY">
 			<div class="eixoX" id=12/1></div> 
@@ -151,6 +181,8 @@
 			<div class="eixoX" id=12/7></div> 
 			<div class="eixoX" id=12/8></div> 
 			<div class="eixoX" id=12/9></div> 
+			<div class="eixoX" id=12/10></div> 
+			<div class="eixoX" id=12/11></div> 
 		</div>
 		<div class="eixoY">
 			<div class="eixoX" id=13/1></div> 
@@ -162,6 +194,8 @@
 			<div class="eixoX" id=13/7></div> 
 			<div class="eixoX" id=13/8></div> 
 			<div class="eixoX" id=13/9></div> 
+			<div class="eixoX" id=13/10></div> 
+			<div class="eixoX" id=13/11></div> 
 		</div>
 		<div class="eixoY">
 			<div class="eixoX" id=14/1></div> 
@@ -173,6 +207,8 @@
 			<div class="eixoX" id=14/7></div> 
 			<div class="eixoX" id=14/8></div> 
 			<div class="eixoX" id=14/9></div> 
+			<div class="eixoX" id=14/10></div> 
+			<div class="eixoX" id=14/11></div> 
 		</div>
 		<div class="eixoY">
 			<div class="eixoX" id=15/1></div> 
@@ -184,6 +220,8 @@
 			<div class="eixoX" id=15/7></div> 
 			<div class="eixoX" id=15/8></div> 
 			<div class="eixoX" id=15/9></div> 
+			<div class="eixoX" id=15/10></div> 
+			<div class="eixoX" id=15/11></div> 
 		</div>
 		<div class="eixoY">
 			<div class="eixoX" id=16/1></div> 
@@ -195,6 +233,8 @@
 			<div class="eixoX" id=16/7></div> 
 			<div class="eixoX" id=16/8></div> 
 			<div class="eixoX" id=16/9></div> 
+			<div class="eixoX" id=16/10></div> 
+			<div class="eixoX" id=16/11></div> 
 		</div>
 		<div class="eixoY">
 			<div class="eixoX" id=17/1></div> 
@@ -206,6 +246,8 @@
 			<div class="eixoX" id=17/7></div> 
 			<div class="eixoX" id=17/8></div> 
 			<div class="eixoX" id=17/9></div> 
+			<div class="eixoX" id=17/10></div> 
+			<div class="eixoX" id=17/11></div> 
 		</div>
 		<div class="eixoY">
 			<div class="eixoX" id=18/1></div> 
@@ -217,6 +259,8 @@
 			<div class="eixoX" id=18/7></div> 
 			<div class="eixoX" id=18/8></div> 
 			<div class="eixoX" id=18/9></div> 
+			<div class="eixoX" id=18/10></div> 
+			<div class="eixoX" id=18/11></div> 
 		</div>
 		<div class="eixoY">
 			<div class="eixoX" id=19/1></div> 
@@ -228,6 +272,8 @@
 			<div class="eixoX" id=19/7></div> 
 			<div class="eixoX" id=19/8></div> 
 			<div class="eixoX" id=19/9></div> 
+			<div class="eixoX" id=19/10></div> 
+			<div class="eixoX" id=19/11></div> 
 		</div>
 		<div class="eixoY">
 			<div class="eixoX" id=20/1></div> 
@@ -239,6 +285,8 @@
 			<div class="eixoX" id=20/7></div> 
 			<div class="eixoX" id=20/8></div> 
 			<div class="eixoX" id=20/9></div> 
+			<div class="eixoX" id=20/10></div> 
+			<div class="eixoX" id=20/11></div> 
 		</div>
 		<div class="eixoY">
 			<div class="eixoX" id=21/1></div> 
@@ -250,6 +298,8 @@
 			<div class="eixoX" id=21/7></div> 
 			<div class="eixoX" id=21/8></div> 
 			<div class="eixoX" id=21/9></div> 
+			<div class="eixoX" id=21/10></div> 
+			<div class="eixoX" id=21/11></div> 
 		</div>
 		<div class="eixoY">
 			<div class="eixoX" id=22/1></div> 
@@ -261,6 +311,8 @@
 			<div class="eixoX" id=22/7></div> 
 			<div class="eixoX" id=22/8></div> 
 			<div class="eixoX" id=22/9></div> 
+			<div class="eixoX" id=22/10></div> 
+			<div class="eixoX" id=22/11></div> 
 		</div>
 		<div class="eixoY">
 			<div class="eixoX" id=23/1></div> 
@@ -272,6 +324,8 @@
 			<div class="eixoX" id=23/7></div> 
 			<div class="eixoX" id=23/8></div> 
 			<div class="eixoX" id=23/9></div> 
+			<div class="eixoX" id=23/10></div> 
+			<div class="eixoX" id=23/11></div> 
 		</div>
 		<div class="eixoY">
 			<div class="eixoX" id=24/1></div> 
@@ -283,6 +337,8 @@
 			<div class="eixoX" id=24/7></div> 
 			<div class="eixoX" id=24/8></div> 
 			<div class="eixoX" id=24/9></div> 
+			<div class="eixoX" id=24/10></div> 
+			<div class="eixoX" id=24/11></div> 
 		</div>
 		<div class="eixoY">
 			<div class="eixoX" id=25/1></div> 
@@ -294,6 +350,8 @@
 			<div class="eixoX" id=25/7></div> 
 			<div class="eixoX" id=25/8></div> 
 			<div class="eixoX" id=25/9></div> 
+			<div class="eixoX" id=25/10></div> 
+			<div class="eixoX" id=25/11></div> 
 		</div>
 		<div class="eixoY">
 			<div class="eixoX" id=26/1></div> 
@@ -305,6 +363,8 @@
 			<div class="eixoX" id=26/7></div> 
 			<div class="eixoX" id=26/8></div> 
 			<div class="eixoX" id=26/9></div> 
+			<div class="eixoX" id=26/10></div> 
+			<div class="eixoX" id=26/11></div> 
 		</div>
 		<div class="eixoY">
 			<div class="eixoX" id=27/1></div> 
@@ -316,6 +376,8 @@
 			<div class="eixoX" id=27/7></div> 
 			<div class="eixoX" id=27/8></div> 
 			<div class="eixoX" id=27/9></div> 
+			<div class="eixoX" id=27/10></div> 
+			<div class="eixoX" id=27/11></div> 
 		</div>
 		<div class="eixoY">
 			<div class="eixoX" id=28/1></div> 
@@ -327,6 +389,8 @@
 			<div class="eixoX" id=28/7></div> 
 			<div class="eixoX" id=28/8></div> 
 			<div class="eixoX" id=28/9></div> 
+			<div class="eixoX" id=28/10></div> 
+			<div class="eixoX" id=28/11></div> 
 		</div>
 		<div class="eixoY">
 			<div class="eixoX" id=29/1></div> 
@@ -338,6 +402,8 @@
 			<div class="eixoX" id=29/7></div> 
 			<div class="eixoX" id=29/8></div> 
 			<div class="eixoX" id=29/9></div> 
+			<div class="eixoX" id=29/10></div> 
+			<div class="eixoX" id=29/11></div> 
 		</div>
 		<div class="eixoY">
 			<div class="eixoX" id=30/1></div> 
@@ -349,6 +415,21 @@
 			<div class="eixoX" id=30/7></div> 
 			<div class="eixoX" id=30/8></div> 
 			<div class="eixoX" id=30/9></div> 
+			<div class="eixoX" id=30/10></div> 
+			<div class="eixoX" id=30/11></div> 
+		</div>
+		<div class="eixoY">
+			<div class="eixoX" id=31/1></div> 
+			<div class="eixoX" id=31/2></div> 
+			<div class="eixoX" id=31/3></div> 
+			<div class="eixoX" id=31/4></div> 
+			<div class="eixoX" id=31/5></div> 
+			<div class="eixoX" id=31/6></div> 
+			<div class="eixoX" id=31/7></div> 
+			<div class="eixoX" id=31/8></div> 
+			<div class="eixoX" id=31/9></div> 
+			<div class="eixoX" id=31/10></div> 
+			<div class="eixoX" id=31/11></div> 
 		</div>
     	</div>
 	    <div class="menu">
@@ -359,6 +440,7 @@
 	    			<span>S</span><input name="cor1" type="button"/>
 	    			<span>D</span><input name="cor2" type="button"/>
 	    			<span>F</span><input name="cor3" type="button"/>
+	    			<span>F</span><input name="cor4	" type="button"/>
 	    		</p>
 	    	</div>
 	    </div>	
@@ -372,5 +454,6 @@
 <script src="js/textoPiscando.js"></script>
 <script src="js/botaoPiscando.js"></script>
 <script src="js/selecionarGrid.js"></script>
+<script src="js/sons.js"></script>
 <script src="js/main.js"></script>
 </html>

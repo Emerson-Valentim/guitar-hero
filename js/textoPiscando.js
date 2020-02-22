@@ -7,7 +7,7 @@ for(i = 0; i < textoColorido.length; i++){
 }
 
 function colorirTexto(i){
-	classesCor = ['blue','red','pink','orange'];
+	classesCor = ['green','red','yellow','blue', 'orange'];
 	rotocaoAutoTexto(classesCor,i);
 }
 
