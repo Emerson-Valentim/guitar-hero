@@ -15,32 +15,32 @@ function mapearPixel(){
 	}	
 }
 
-function gerarNota(){
+function gerarNota(teste){
 	// valores de 0 - 4 referentes a quantidade de colunas para gerar notas
-	var posicao = Math.floor(Math.random() * pixel.length)
-	switch(posicao){
+	//var posicao = Math.floor(Math.random() * pixel.length)
+	switch(teste){
 		case 0:
-			pixel[posicao].style.background = cores[0];
+			pixel[teste].style.background = cores[0];
 			//interpretarSons(0);
 			break;
 		case 1:
-			pixel[posicao].style.background = cores[1];
+			pixel[teste].style.background = cores[1];
 			//interpretarSons(1);
 			break;
 		case 2:
-			pixel[posicao].style.background = cores[2];
+			pixel[teste].style.background = cores[2];
 			//interpretarSons(2);
 			break;
 		case 3:
-			pixel[posicao].style.background = cores[3];
+			pixel[teste].style.background = cores[3];
 			//interpretarSons(3);
 			break;
 		case 4:
-			pixel[posicao].style.background = cores[4];
+			pixel[teste].style.background = cores[4];
 			//interpretarSons(3);
 			break;
 	} 	
-	return posicao;
+	return teste;
 }
 
 var linhaEsteira = [];
@@ -50,7 +50,7 @@ function queryEixoX(linha){
 	var X = $('.eixoX',$('.eixoY')[linha]);
 	for(i = 0; i < X.length; i++){
 		if(i % 2 != 0){
-			linhaEsteira.push(X[i])	;
+			linhaEsteira.push(X[i]);
 		}
 	}
 }
@@ -125,23 +125,23 @@ function andarEsteira(linha){
 	var andar = setInterval(function(){
 		queryEixoX(linha);
 		for(coluna = 0; coluna < colunas.length; coluna++){
-			validarCor(coluna, linha)
+			validarCor(coluna, linha);
 			contador++;
 			limparUltimaLinha(coluna);
 		}
 		if(contador > 4){
-			clearInterval(andar)
+			clearInterval(andar);
 		}
 	}, 60)
 }
 
-pontosPerdidos = -5
-pontosFeitos = -15
+pontosPerdidos = -5;
+pontosFeitos = -15;
 
 function limparUltimaLinha(coluna){
 	if(validarLinhaUnitaria(coluna, 30)){
 		//Maior valor de linhas 0 ~ 30 (31)
-		colunas[coluna][30].style.background = "gray"
+		colunas[coluna][30].style.background = "gray";
 		contarPontosPerdidos();
 	}
 }
@@ -149,7 +149,7 @@ function limparUltimaLinha(coluna){
 
 function validarLinhaUnitaria(coluna, linha){
 	if(colunas[coluna][linha].style.background != 'gray'){
-		colunas[coluna][linha].style.background = "gray"
+		colunas[coluna][linha].style.background = "gray";
 		exibirPrecisao(linha);
 		return true;
 	}
@@ -159,10 +159,10 @@ function validarLinhaUnitaria(coluna, linha){
 function exibirPrecisao(linha){
 	switch(linha){
 		//Linhas referente a pontuação posicionadas na lista 0 ~ 30 (31)
-		case 28:
+		case 27:
 			$('#acurracy').text('BOM');
 			break;
-		case 29:
+		case 28:
 			$('#acurracy').text('PERFEITO');
 			break;
 		case 29:
@@ -173,7 +173,7 @@ function exibirPrecisao(linha){
 
 function contarPontosPerdidos(){
 	pontosPerdidos++;
-	interpretarSons(5);
+	//interpretarSons(5);
 		//Referente ao id do erro na lista dentro da função InterpretarSons.
 }
 
@@ -232,29 +232,36 @@ function limparGrid(){
 function executarEntrada(cores, coluna){
 	contarAcertos(coluna);
 	trocarCorInput(cores, coluna);
-	atualizarPlacar('#pontosPerdidos')
-	atualizarPlacar('#pontosFeitos')
+	atualizarPlacar('#pontosPerdidos');
+	atualizarPlacar('#pontosFeitos');
 }
 
-queryEixoY();
-mapearPixel();
-colorirTutorial(cores);
-pintarBorda();
-limparGrid();
+function inicializarSite(){
+	queryEixoY();
+	mapearPixel();
+	limparGrid();
+	colorirTutorial(cores);
+	pintarBorda();	
+}
+
+inicializarSite();
 
 $('#play').click(function(){
+	setTimeout(function(){
+		interpretarSons(5);
+	}, 13300);
 	$('#joystick').focus();
 	$('#joystick').keypress(function(e){
 		interpretarEntrada(e.keyCode)
 	})
-	linha = 30 //Maior valor de linhas 0 ~ 30 (31);
+	linha = 30; //Maior valor de linhas 0 ~ 30 (31);
 	setInterval(function(){
 		andarEsteira(linha);
 		linha--;	
 		if(linha == -1){
 			linha = 30;
-			gerarNota();
+			inserirMusica();
 		}
-	}, 10)
+	}, 18)
 
 })
